@@ -1,0 +1,28 @@
+{
+  "name": "projet-citations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nagoloum/projet-citations.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Nagoloum/projet-citations/issues"
+  },
+  "homepage": "https://github.com/Nagoloum/projet-citations#readme",
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "babel-jest": "^30.2.0",
+    "jest": "^30.2.0"
+  }
+}
