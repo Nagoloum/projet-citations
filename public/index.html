@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Générateur de citations</title>
+  <style>
+    :root { --bg: #0f172a; --card: #0b1220; --accent: #60a5fa; --text: #e6eef8; }
+    body { min-height:100vh; margin:0; font-family: system-ui, sans-serif; background: linear-gradient(180deg,#071029 0%, #071428 100%); color:var(--text); display:grid; place-items:center; }
+    .card { width:90%; max-width:720px; background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:16px; padding:32px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    h1 { margin:0 0 16px; color:var(--accent); }
+    .quote { font-size:20px; line-height:1.6; padding:24px; background:rgba(255,255,255,0.03); border-radius:12px; border-left:4px solid var(--accent); min-height:80px; }
+    button { padding:12px 20px; margin:8px; border:none; border-radius:8px; font-weight:600; cursor:pointer; }
+    #newBtn { background:var(--accent); color:#0f172a; }
+    #copyBtn { background:transparent; border:1px solid rgba(255,255,255,0.2); color:var(--text); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Générateur de citations inspirantes</h1>
+    <div id="quote" class="quote">Clique sur le bouton pour commencer !</div>
+    <div>
+      <button id="newBtn">Nouvelle citation</button>
+      <button id="copyBtn">Copier</button>
+    </div>
+  </div>
+
+  <script>
+    const citations = [
+      "Le succès est la somme de petits efforts répétés jour après jour.",
+      "Apprendre sans réfléchir est vain. Réfléchir sans apprendre est dangereux.",
+      "La simplicité est la sophistication suprême.",
+      "La meilleure façon de prédire l’avenir, c’est de le créer."
+    ];
+
+    function citationAleatoire() {
+      return citations[Math.floor(Math.random() * citations.length)];
+    }
+
+    const quoteEl = document.getElementById('quote');
+    const newBtn = document.getElementById('newBtn');
+    const copyBtn = document.getElementById('copyBtn');
+
+    function afficher() {
+      quoteEl.textContent = citationAleatoire();
+    }
+
+    newBtn.onclick = afficher;
+
+    copyBtn.onclick = async () => {
+      try {
+        await navigator.clipboard.writeText(quoteEl.textContent);
+        copyBtn.textContent = 'Copié !';
+        setTimeout(() => copyBtn.textContent = 'Copier', 2000);
+      } catch {
+        alert('Impossible de copier');
+      }
+    };
+
+    // Citation au chargement
+    afficher();
+  </script>
+</body>
+</html>

@@ -1,4 +1,5 @@
-name: CI/CD Node.js - Générateur de citations
+# .github/workflows/ci-cd.yml
+name: CI/CD - Générateur de citations
 
 on:
   push:
@@ -9,7 +10,6 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -25,3 +25,21 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+  deploy:
+    needs: build-and-test                # ← Attend que les tests passent
+    if: github.ref == 'refs/heads/main'  # ← Déploie seulement sur main
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-args: '--prod'
