@@ -1,0 +1,25 @@
+Lien du projet sur vercel: https://projet-citations-dusky.vercel.app/
+
+PRESENTATION DU PROJET
+
+le projet est un site web de génération de citations aléatoires; lorsque je clique sur le bouton suivant alors une autre citation est généré en fonction du tableau de données qui est pré-enregistré.
+
+QUESTIONS
+
+1.	Difference entre CI et CD
+CI = « On casse rien quand on merge » tandis que CD = « On peut mettre en production à tout moment, voire on le fait automatiquement »
+
+2.	Pourquoi les tests unitaires sont ils essentiels a chaque deploiement ?
+-	Detection ultra precoce des regressions
+-	Confiqnce absolue pour deployer autant de fois que possible
+-	Securite
+
+3.	Comment securiser les workflow CI/CD Publics ?
+- 	Ne pas jamais donner secrets ni les droits d’ecriture à workflow declenches par un fork
+- 	Restreindre les workflows aux pushes sur branches protégées + obliger les reviews sur les PR qui modifient .github/workflows/
+
+
+4.	Quels sont les avantages d’un déploiement automatisé pour un projet d’équipe ?
+-	Gain de temps enorme
+-	Feedback rapide
+-	Rapidite de deploiement
