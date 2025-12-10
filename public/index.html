@@ -12,16 +12,14 @@
     .quote { font-size:20px; line-height:1.6; padding:24px; background:rgba(255,255,255,0.03); border-radius:12px; border-left:4px solid var(--accent); min-height:80px; }
     button { padding:12px 20px; margin:8px; border:none; border-radius:8px; font-weight:600; cursor:pointer; }
     #newBtn { background:var(--accent); color:#0f172a; }
-    #copyBtn { background:transparent; border:1px solid rgba(255,255,255,0.2); color:var(--text); }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>Générateur de citations inspirantes</h1>
+    <h1>Générateur de citations.</h1>
     <div id="quote" class="quote">Clique sur le bouton pour commencer !</div>
     <div>
       <button id="newBtn">Nouvelle citation</button>
-      <button id="copyBtn">Copier</button>
     </div>
   </div>
 
@@ -39,23 +37,12 @@
 
     const quoteEl = document.getElementById('quote');
     const newBtn = document.getElementById('newBtn');
-    const copyBtn = document.getElementById('copyBtn');
 
     function afficher() {
       quoteEl.textContent = citationAleatoire();
     }
 
     newBtn.onclick = afficher;
-
-    copyBtn.onclick = async () => {
-      try {
-        await navigator.clipboard.writeText(quoteEl.textContent);
-        copyBtn.textContent = 'Copié !';
-        setTimeout(() => copyBtn.textContent = 'Copier', 2000);
-      } catch {
-        alert('Impossible de copier');
-      }
-    };
 
     // Citation au chargement
     afficher();
